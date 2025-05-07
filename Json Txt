@@ -1,0 +1,1165 @@
+[
+    {
+        "id": "a7a5d6890dcdcc4b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e2ae0245a019e034",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b820190ca37ba1a1",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "79963743f7ee493a",
+        "type": "mattercontroller",
+        "networkInterface": "Wi-Fi",
+        "storageLocation": "C:\\Users\\User/.matter",
+        "logLevel": "DEBUG"
+    },
+    {
+        "id": "2e7cb6fa3ae92516",
+        "type": "modbus-client",
+        "name": "",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "10502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "6ac6801c33a99455",
+        "type": "inject",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "Code & Label",
+        "props": [
+            {
+                "p": "payload.code",
+                "v": "25900140218",
+                "vt": "str"
+            },
+            {
+                "p": "payload.label",
+                "v": "LaptopBridge",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "64945dd7f0910b1c"
+            ]
+        ]
+    },
+    {
+        "id": "851a5fa2762a3780",
+        "type": "debug",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "64945dd7f0910b1c",
+        "type": "mattermanager",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "Commision Device",
+        "controller": "79963743f7ee493a",
+        "method": "commissionDevice",
+        "code": "payload.code",
+        "codeType": "msg",
+        "deviceid": "",
+        "deviceidType": "str",
+        "label": "payload.label",
+        "labelType": "msg",
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "851a5fa2762a3780"
+            ]
+        ]
+    },
+    {
+        "id": "d675ee93984f652b",
+        "type": "inject",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "54a2bf7fbee990ae"
+            ]
+        ]
+    },
+    {
+        "id": "54a2bf7fbee990ae",
+        "type": "mattermanager",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "List Devices",
+        "controller": "79963743f7ee493a",
+        "method": "listDevices",
+        "code": "",
+        "codeType": "str",
+        "deviceid": "",
+        "deviceidType": "str",
+        "label": "",
+        "labelType": "str",
+        "x": 350,
+        "y": 420,
+        "wires": [
+            [
+                "d2c26b622aef79bb"
+            ]
+        ]
+    },
+    {
+        "id": "d2c26b622aef79bb",
+        "type": "debug",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "6bda2d92e2476408",
+        "type": "inject",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.id",
+                "v": "5294526207847625479",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 600,
+        "wires": [
+            [
+                "151ae41c1822218a"
+            ]
+        ]
+    },
+    {
+        "id": "151ae41c1822218a",
+        "type": "mattermanager",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "Remove  Device",
+        "controller": "",
+        "method": "decommissionDevice",
+        "code": "",
+        "codeType": "str",
+        "deviceid": "payload.id",
+        "deviceidType": "msg",
+        "label": "",
+        "labelType": "",
+        "x": 360,
+        "y": 600,
+        "wires": [
+            [
+                "619ffae49b11d67c"
+            ]
+        ]
+    },
+    {
+        "id": "619ffae49b11d67c",
+        "type": "debug",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "4af42977bff7a5b3",
+        "type": "inject",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.id",
+                "v": "3418228787271691840",
+                "vt": "str"
+            },
+            {
+                "p": "payload.label",
+                "v": "Button",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "8bcd308a63d57d6b"
+            ]
+        ]
+    },
+    {
+        "id": "8bcd308a63d57d6b",
+        "type": "mattermanager",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "Rename Device",
+        "controller": "",
+        "method": "renameDevice",
+        "code": "",
+        "codeType": "str",
+        "deviceid": "payload.id",
+        "deviceidType": "msg",
+        "label": "payload.label",
+        "labelType": "msg",
+        "x": 360,
+        "y": 540,
+        "wires": [
+            [
+                "a8a2f80ebe8533d1"
+            ]
+        ]
+    },
+    {
+        "id": "a8a2f80ebe8533d1",
+        "type": "debug",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "1a7d5ef874eb1812",
+        "type": "debug",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "dc878cb6ab8243fa",
+        "type": "inject",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.id",
+                "v": " 8251693343369860730",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 480,
+        "wires": [
+            [
+                "37a19c8725de62e0"
+            ]
+        ]
+    },
+    {
+        "id": "37a19c8725de62e0",
+        "type": "mattermanager",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "Get  Device",
+        "controller": "79963743f7ee493a",
+        "method": "getDevice",
+        "code": "",
+        "codeType": "str",
+        "deviceid": "payload.id",
+        "deviceidType": "msg",
+        "label": "",
+        "labelType": "str",
+        "x": 350,
+        "y": 480,
+        "wires": [
+            [
+                "1a7d5ef874eb1812"
+            ]
+        ]
+    },
+    {
+        "id": "34cbe714d88cae46",
+        "type": "matterreadattr",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "",
+        "controller": "79963743f7ee493a",
+        "device": "8251693343369860730-1",
+        "deviceName": "-extendedcolorlight",
+        "endpoint": "",
+        "cluster": "6",
+        "attr": "onOff",
+        "simpleMode": true,
+        "x": 420,
+        "y": 660,
+        "wires": [
+            [
+                "9b920a5535769c6c",
+                "189a7694b663df61"
+            ]
+        ]
+    },
+    {
+        "id": "e360f02d9cf1cc54",
+        "type": "inject",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "",
+        "props": [],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 660,
+        "wires": [
+            [
+                "34cbe714d88cae46"
+            ]
+        ]
+    },
+    {
+        "id": "9b920a5535769c6c",
+        "type": "debug",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 730,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "864cb5cb192ef95f",
+        "type": "mattersubscribe",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "",
+        "controller": "79963743f7ee493a",
+        "device": "8251693343369860730-1",
+        "deviceName": "LaptopBridge-extendedcolorlight",
+        "endpoint": "",
+        "cluster": "6",
+        "attr": "onOff",
+        "simpleMode": false,
+        "topic": "",
+        "x": 390,
+        "y": 760,
+        "wires": [
+            [
+                "4cd2b00d5303e591"
+            ]
+        ]
+    },
+    {
+        "id": "4cd2b00d5303e591",
+        "type": "debug",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "SUBS",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "c18b5af3eb4a3807",
+        "type": "modbus-flex-getter",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "10502",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "2e7cb6fa3ae92516",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 1010,
+        "y": 720,
+        "wires": [
+            [
+                "68a53445e8ab10b2"
+            ],
+            [
+                "f03dd886cea939ad"
+            ]
+        ]
+    },
+    {
+        "id": "f03dd886cea939ad",
+        "type": "modbus-response",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "",
+        "registerShowMax": "2000",
+        "x": 910,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "189a7694b663df61",
+        "type": "function",
+        "z": "a7a5d6890dcdcc4b",
+        "name": " FC 2 Function",
+        "func": "msg.payload = { value: msg.payload, \n'fc': 2, \n'unitid': 1, \n'address': 0 , \n'quantity': 4 } \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 720,
+        "wires": [
+            [
+                "c18b5af3eb4a3807"
+            ]
+        ]
+    },
+    {
+        "id": "c1b09bc41f5f34e8",
+        "type": "debug",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "03c047d7070755e9",
+        "type": "comment",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "Server Inpout and output debug",
+        "info": "ModBus Server input via flex and output to the server",
+        "x": 990,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "68a53445e8ab10b2",
+        "type": "link out",
+        "z": "a7a5d6890dcdcc4b",
+        "name": "out 1",
+        "mode": "link",
+        "links": [
+            "5b128dc692775068",
+            "d690d5b39a7277ae"
+        ],
+        "x": 1225,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "1845cfe2678b0cea",
+        "type": "inject",
+        "z": "e2ae0245a019e034",
+        "name": "Code & Label",
+        "props": [
+            {
+                "p": "payload.code",
+                "v": "00324440260",
+                "vt": "str"
+            },
+            {
+                "p": "payload.label",
+                "v": "LaptopBridge",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "604020bb8744961e"
+            ]
+        ]
+    },
+    {
+        "id": "efd85dd2ed6feb95",
+        "type": "debug",
+        "z": "e2ae0245a019e034",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "604020bb8744961e",
+        "type": "mattermanager",
+        "z": "e2ae0245a019e034",
+        "name": "Commision Device",
+        "controller": "24cb35c0870756c1",
+        "method": "commissionDevice",
+        "code": "payload.code",
+        "codeType": "msg",
+        "deviceid": "",
+        "deviceidType": "str",
+        "label": "payload.label",
+        "labelType": "msg",
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "efd85dd2ed6feb95"
+            ]
+        ]
+    },
+    {
+        "id": "d29f21b7d4db0551",
+        "type": "inject",
+        "z": "e2ae0245a019e034",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "f3f28beae04d841d"
+            ]
+        ]
+    },
+    {
+        "id": "f3f28beae04d841d",
+        "type": "mattermanager",
+        "z": "e2ae0245a019e034",
+        "name": "List Devices",
+        "controller": "24cb35c0870756c1",
+        "method": "listDevices",
+        "code": "",
+        "codeType": "str",
+        "deviceid": "",
+        "deviceidType": "str",
+        "label": "",
+        "labelType": "",
+        "x": 350,
+        "y": 420,
+        "wires": [
+            [
+                "ff0ea4741553af5e"
+            ]
+        ]
+    },
+    {
+        "id": "ff0ea4741553af5e",
+        "type": "debug",
+        "z": "e2ae0245a019e034",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c7a410d3da50def2",
+        "type": "inject",
+        "z": "e2ae0245a019e034",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.id",
+                "v": "5294526207847625479",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 600,
+        "wires": [
+            [
+                "5b82c55e93df3da6"
+            ]
+        ]
+    },
+    {
+        "id": "5b82c55e93df3da6",
+        "type": "mattermanager",
+        "z": "e2ae0245a019e034",
+        "name": "Remove  Device",
+        "controller": "24cb35c0870756c1",
+        "method": "decommissionDevice",
+        "code": "",
+        "codeType": "str",
+        "deviceid": "payload.id",
+        "deviceidType": "msg",
+        "label": "",
+        "labelType": "",
+        "x": 360,
+        "y": 600,
+        "wires": [
+            [
+                "d614d218f441959e"
+            ]
+        ]
+    },
+    {
+        "id": "d614d218f441959e",
+        "type": "debug",
+        "z": "e2ae0245a019e034",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "5c997c48c5730e11",
+        "type": "inject",
+        "z": "e2ae0245a019e034",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.id",
+                "v": "3418228787271691840",
+                "vt": "str"
+            },
+            {
+                "p": "payload.label",
+                "v": "Button",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "ce16f69c32e6180a"
+            ]
+        ]
+    },
+    {
+        "id": "ce16f69c32e6180a",
+        "type": "mattermanager",
+        "z": "e2ae0245a019e034",
+        "name": "Rename Device",
+        "controller": "24cb35c0870756c1",
+        "method": "renameDevice",
+        "code": "",
+        "codeType": "str",
+        "deviceid": "payload.id",
+        "deviceidType": "msg",
+        "label": "payload.label",
+        "labelType": "msg",
+        "x": 360,
+        "y": 540,
+        "wires": [
+            [
+                "7b0e705743cd509c"
+            ]
+        ]
+    },
+    {
+        "id": "7b0e705743cd509c",
+        "type": "debug",
+        "z": "e2ae0245a019e034",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a672ce7c2d76c6be",
+        "type": "debug",
+        "z": "e2ae0245a019e034",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9b9faf489726dc70",
+        "type": "inject",
+        "z": "e2ae0245a019e034",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.id",
+                "v": "8251693343369860730-1",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 480,
+        "wires": [
+            [
+                "f74c6223d527a1ca"
+            ]
+        ]
+    },
+    {
+        "id": "f74c6223d527a1ca",
+        "type": "mattermanager",
+        "z": "e2ae0245a019e034",
+        "name": "Get  Device",
+        "controller": "24cb35c0870756c1",
+        "method": "getDevice",
+        "code": "",
+        "codeType": "str",
+        "deviceid": "payload.id",
+        "deviceidType": "msg",
+        "label": "",
+        "labelType": "",
+        "x": 350,
+        "y": 480,
+        "wires": [
+            [
+                "a672ce7c2d76c6be"
+            ]
+        ]
+    },
+    {
+        "id": "bd5597e757634dbc",
+        "type": "matterreadattr",
+        "z": "e2ae0245a019e034",
+        "name": "",
+        "controller": "24cb35c0870756c1",
+        "device": "8251693343369860730-1",
+        "deviceName": "LaptopBridge-extendedcolorlight",
+        "endpoint": "",
+        "cluster": "6",
+        "attr": "onOff",
+        "simpleMode": true,
+        "x": 460,
+        "y": 720,
+        "wires": [
+            [
+                "9e70581a8b36fcd5"
+            ]
+        ]
+    },
+    {
+        "id": "9007abb8f8d318e2",
+        "type": "inject",
+        "z": "e2ae0245a019e034",
+        "name": "",
+        "props": [],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 720,
+        "wires": [
+            [
+                "bd5597e757634dbc"
+            ]
+        ]
+    },
+    {
+        "id": "9e70581a8b36fcd5",
+        "type": "debug",
+        "z": "e2ae0245a019e034",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 730,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "15fe59be78e0f493",
+        "type": "mattersubscribe",
+        "z": "e2ae0245a019e034",
+        "name": "",
+        "controller": "24cb35c0870756c1",
+        "device": "8251693343369860730-1",
+        "deviceName": "LaptopBridge-extendedcolorlight",
+        "endpoint": "",
+        "cluster": "6",
+        "attr": "onOff",
+        "simpleMode": true,
+        "topic": "",
+        "x": 390,
+        "y": 820,
+        "wires": [
+            [
+                "69c9fd0bd3b55ed5"
+            ]
+        ]
+    },
+    {
+        "id": "69c9fd0bd3b55ed5",
+        "type": "debug",
+        "z": "e2ae0245a019e034",
+        "name": "SUBS",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "f5d3aa77342b46de",
+        "type": "modbus-server",
+        "z": "b820190ca37ba1a1",
+        "name": "",
+        "logEnabled": false,
+        "hostname": "0.0.0.0",
+        "serverPort": 10502,
+        "responseDelay": 100,
+        "delayUnit": "ms",
+        "coilsBufferSize": 10000,
+        "holdingBufferSize": 10000,
+        "inputBufferSize": 10000,
+        "discreteBufferSize": 10000,
+        "showErrors": false,
+        "showStatusActivities": true,
+        "x": 560,
+        "y": 220,
+        "wires": [
+            [
+                "9fa56a236cb4e19b"
+            ],
+            [
+                "9fa56a236cb4e19b"
+            ],
+            [
+                "9fa56a236cb4e19b"
+            ],
+            [
+                "9fa56a236cb4e19b"
+            ],
+            [
+                "9fa56a236cb4e19b"
+            ]
+        ]
+    },
+    {
+        "id": "9fa56a236cb4e19b",
+        "type": "debug",
+        "z": "b820190ca37ba1a1",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "4552de17ae6f03da",
+        "type": "inject",
+        "z": "b820190ca37ba1a1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "flow",
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "f5d3aa77342b46de"
+            ]
+        ]
+    },
+    {
+        "id": "d7e9ed5f7b02477f",
+        "type": "modbus-flex-getter",
+        "z": "b820190ca37ba1a1",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "2e7cb6fa3ae92516",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 570,
+        "y": 140,
+        "wires": [
+            [
+                "dc3e3451d65f9979"
+            ],
+            [
+                "273527a2833c4942"
+            ]
+        ]
+    },
+    {
+        "id": "273527a2833c4942",
+        "type": "modbus-response",
+        "z": "b820190ca37ba1a1",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 890,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "dfad98130886deea",
+        "type": "function",
+        "z": "b820190ca37ba1a1",
+        "name": "FC 2 -> Flow 1",
+        "func": "msg.payload = { value: msg.payload, \n'fc': 2, \n'unitid': 1, \n'address': 0 , \n'quantity': 4 } \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "d7e9ed5f7b02477f"
+            ]
+        ]
+    },
+    {
+        "id": "d690d5b39a7277ae",
+        "type": "link in",
+        "z": "b820190ca37ba1a1",
+        "name": "link in 1",
+        "links": [
+            "68a53445e8ab10b2"
+        ],
+        "x": 175,
+        "y": 140,
+        "wires": [
+            [
+                "dfad98130886deea"
+            ]
+        ]
+    },
+    {
+        "id": "dc3e3451d65f9979",
+        "type": "debug",
+        "z": "b820190ca37ba1a1",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "119183c48e645fdc",
+        "type": "function",
+        "z": "b820190ca37ba1a1",
+        "name": "FC 2 copypaste",
+        "func": "msg.payload = { value: msg.payload, \n'fc': 2, \n'unitid': 1, \n'address': 0 , \n'quantity': 4 } \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    }
+]
