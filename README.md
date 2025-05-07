@@ -1,0 +1,1 @@
+Red Node System to read the medicine frigde input ON/OFF  from a Matter controller than send it to a modbus server so an operator can analyze and notificate the hospital team
